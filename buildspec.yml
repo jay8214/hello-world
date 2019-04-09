@@ -1,21 +1,14 @@
 version: 0.1
 
 phases:
-  pre_build:
-    commands:
-      - echo Show out Path
   build:
     commands:
-      - date
-      - ls
-      - mkdir config_files
-      - aws s3 cp --recursive s3://acer-deployment-package-137197452556/files-not-in-git-package ./config_files/
+      - echo Build started on `date`
   post_build:
     commands:
-      - echo Completed on `date`
+      - echo Build completed on `date`
 artifacts:
     files:
-      - web/**/*
-      - scripts/**/*
-      - config_files/**/*
+      - index.php
       - appspec.yml
+discard-paths: yes
